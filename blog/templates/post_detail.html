@@ -1,0 +1,6 @@
+   {% extends 'single2.html' %}
+
+    {% block content %}
+            <h1><b>{{ post.title }}</b></h1>
+            <p>{{ post.text|safe|escape }}</p>
+    {% endblock %}

@@ -1,0 +1,4 @@
+beautifulsoup4==4.4.1
+dj-database-url==0.4.1
+django==1.9.5
+virtualenv==15.0.2

@@ -1,0 +1,16 @@
+{% extends 'index2.html' %}
+{% block name %}<center><font face="impact" size="10" id = "shadows">СПИСОК ПОСТОВ</font></center>{% endblock %}
+{% block content %}
+{% for post in posts %}
+<div class="content-grid-info">
+    <a href="{% url 'post_detail' pk=post.pk %}"><img src="static/images/post2.1.jpg" alt=""/></a>
+    <div class="post-info">
+    <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>{{ post.published_date }} / 3 комментария</h4>
+    <p>{{ post.text |striptags | truncatewords:50 }}</p>
+    <a href="{% url 'post_detail' pk=post.pk %}"><span></span>READ MORE</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+

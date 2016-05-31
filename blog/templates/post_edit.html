@@ -1,0 +1,13 @@
+ {% extends 'index2.html' %}
+    {% block content %}
+         <div class="content-form">
+					 <h3><b>ДОБАВИТЬ ПУБЛИКАЦИЮ</b></h3>
+					<form method="POST">
+						{% csrf_token %}
+            		{{ form.as_p }}
+						<input type="submit" value="Добавить"/>
+				   </form>
+						 </div>
+    {% endblock %}
+
+
