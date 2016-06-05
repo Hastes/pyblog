@@ -29,6 +29,7 @@ def post_new(request):
         else:
             form = PostForm()
         return render(request, 'post_edit.html', {'form': form})
+
 def PostHabr(request):
     post = Post.objects.filter(published_date__lte=timezone.now())[0]
     oldtitle = post.title
