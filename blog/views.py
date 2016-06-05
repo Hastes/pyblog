@@ -7,7 +7,7 @@ import datetime
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
-from .post_habr import GetContentHabr, GetTitleHabr
+#from .post_habr import GetContentHabr, GetTitleHabr
 
 
 
