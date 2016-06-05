@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
-                 'C:/djangocode/pyt1/blog/templates/static',
+                 'C:/djangocode/pyt1/static',
 )
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
