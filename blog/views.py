@@ -41,4 +41,4 @@ def PostHabr(request):
         Post.objects.create(author=request.user, title=title, text=GetContentHabr(),published_date = timezone.now())
         return HttpResponseRedirect("http://localhost:8000/")
     else:
-        return HttpResponse("Пост уже добавлен")
+        return HttpResponse("Post usje dobavlen")
