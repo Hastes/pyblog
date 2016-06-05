@@ -121,6 +121,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
+        'C:/djangocode/pyt1/static',
 )
 STATIC_URL = '/static/'
 db_from_env = dj_database_url.config(conn_max_age=500)
