@@ -22,8 +22,8 @@ class Post(models.Model):
         ordering = ['-published_date',]
 
 class Comment(models.Model):
-    comment_author = models.CharField(max_length=200)
-    comment_text = models.TextField()
+    comment_author = models.CharField(max_length=200,verbose_name="Ваше имя")
+    comment_text = models.TextField(verbose_name="Текст")
     comment_created_date = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)
     class Meta:

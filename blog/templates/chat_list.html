@@ -10,15 +10,30 @@
 {% endblock %}
 
 {% block content %}
-{% for com in comments %}
-Автор: {{com.comment_author}}<br>
-{{com.comment_created_date}}<br>
-{{com.comment_text}}<br>
-<a href="/addlike/{{ com.id }}/">Плюсик: + {{com.likes}}</a><br><br>
-{% endfor %}
+
+<div class="content-form">
 <form action="/addcomment/" method="post">
     {% csrf_token %}
-    {{form.as_p}}
+    {{form}}
     <input type="submit" class="button" value="Отправить">
 </form>
+    </div><br>
+<style>
+   hr {
+    border: none; /* Убираем границу */
+    background-color: rgba(185, 206, 246, 0.59); /* Цвет линии */
+    color: rgba(185, 206, 246, 0.65); /* Цвет линии для IE6-7 */
+    height: 1px; /* Толщина линии */
+   }
+  </style>
+
+{% for com in comments %}
+
+<ul class="comment-list">Автор: {{com.comment_author}}<br>
+<li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
+<img src="/static/images/avatar.png" class="img-responsive" alt="">{{com.comment_text}}<br>
+<a href="/addlike/{{ com.id }}/">Плюсик: + {{com.likes}}</a>
+    </li></ul>
+{% endfor %}
+
 {% endblock %}
