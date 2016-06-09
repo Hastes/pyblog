@@ -5,7 +5,7 @@ from django.utils import timezone
 class Post(models.Model):
 
     author = models.ForeignKey('auth.User')
-    title = models.CharField(verbose_name=('Заголовок'),max_length=200)
+    title = models.CharField(verbose_name=('Заголовок'),max_length=200,name='title')
     text = models.TextField(verbose_name=('Текст'))
     created_date = models.DateTimeField(verbose_name=('Дата создания'),
             default=timezone.now)
@@ -20,3 +20,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-published_date',]
+
+class Comment(models.Model):
+    comment_author = models.CharField(max_length=200)
+    comment_text = models.TextField()
+    comment_created_date = models.DateTimeField(default=timezone.now)
+    likes = models.IntegerField(default=0)
+    class Meta:
+        ordering = ['-comment_created_date']

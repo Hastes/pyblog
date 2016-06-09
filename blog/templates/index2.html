@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="header">  
 	 <div class="container">
 		  <div class="logo">
-			  <a href="http://localhost:5000/"><img src="/static/images/logo.jpg" title="На главную" /></a>
+			  <a href="/"><img src="/static/images/logo.jpg" title="На главную" /></a>
 		  </div>
 
 			 <!---start-top-nav---->
@@ -50,17 +50,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 				 <div class="search">
 					 <form>
-					 <input type="text" placeholder="поиск" required="">
+					 <input type="text" placeholder="Поиск" required="">
 					 <input type="submit" value=""/>
 					 </form>
 				 </div>
-				  <span class="menu"> </span> 
-				   <ul>
-						<li class="active"><a href="http://localhost:5000/">HOME</a></li>
-						<li><a href="about.html">ABOUT</a></li>	
-						<li><a href="contact.html">CONTACT</a></li>						
-						<div class="clearfix"> </div>
-				 </ul>
+				  <span class="menu"> </span>
+				  {% block menu %}
+					 {% endblock %}
 			 </div>
 			 <div class="clearfix"></div>
 					<script>
@@ -83,13 +79,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 </div>
 			  </div>
 			  <div class="col-md-4 content-right">
+				  {% if request.user.is_superuser %}
 				  <div class="recent">
-				  <h3><a href="http://localhost:5000/admin/">ADMIN PANEL</a></h3>
+				  <h3><a href="/admin/">ADMIN PANEL</a></h3>
 					  <ul>
 						  <li><a href="{% url 'blog.views.post_new' %}">Добавить пост</a> </li>
 						  <li><a href="">Добавить последний хабрпост</a></li>
 					  </uL>
 					  </div>
+				  {% endif %}
 				 <div class="recent">
 					 <h3>RECENT POSTS</h3>
 						 {% for post in posts %}

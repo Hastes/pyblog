@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="header">  
 	 <div class="container">
 		  <div class="logo">
-			  <a href="http://localhost:5000/"><img src="/static/images/logo.jpg" title="" /></a>
+			  <a href="/"><img src="/static/images/logo.jpg" title="" /></a>
 		  </div>
 			 <!---start-top-nav---->
 			 <div class="top-menu">
@@ -91,8 +91,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 					 <h3>Leave a comment</h3>
 					<form>
-						{% block comment %}
-						{% endblock %}
 						<input type="text" placeholder="Name" required/>
 						<input type="text" placeholder="Email" required/>
 						<input type="text" placeholder="Phone" required/>
@@ -103,19 +101,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		  </div>
 
 			  <div class="col-md-4 side-content">
-				 <div class="recent">
-				  <h3><a href="http://localhost:5000/admin/">ADMIN PANEL</a></h3>
-					  <ul>
-						  <li><a href="{% url 'blog.views.post_new' %}">Добавить пост</a> </li>
-					  </uL>
-					  </div>
-				 <div class="recent">
-				  <h3><a href="http://localhost:5000/admin/">ADMIN PANEL</a></h3>
-					  <ul>
-						  <li><a href="{% url 'blog.views.post_new' %}">Добавить пост</a> </li>
-						  <li><a href="">Добавить последний хабрпост</a></li>
-					  </uL>
-					  </div>
 				 <div class="recent">
 					 <h3>RECENT POSTS</h3>
 						 {% for post in posts %}

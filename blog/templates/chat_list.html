@@ -1,0 +1,24 @@
+{% extends 'index2.html' %}
+
+{% block menu %}
+<ul>
+    <li ><a href="/">HOME</a></li>
+    <li><a href="/about/">ABOUT</a></li>
+    <li class="active"><a href="/chat/">CHAT</a></li>
+    <div class="clearfix"> </div>
+</ul>
+{% endblock %}
+
+{% block content %}
+{% for com in comments %}
+Автор: {{com.comment_author}}<br>
+{{com.comment_created_date}}<br>
+{{com.comment_text}}<br>
+<a href="/addlike/{{ com.id }}/">Плюсик: + {{com.likes}}</a><br><br>
+{% endfor %}
+<form action="/addcomment/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="button" value="Отправить">
+</form>
+{% endblock %}
