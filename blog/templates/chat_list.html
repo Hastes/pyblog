@@ -32,7 +32,7 @@ function validate(){
    //Если поле email пустое выведем сообщение и предотвратим отправку формы
    if (y.length==0){
        document.getElementById("errorf").innerHTML="Errors:";
-      document.getElementById("emailf").innerHTML="*Заполните поля!";
+      document.getElementById("namef").innerHTML="*Заполните поля!";
       return false;
    }
    //Проверим содержит ли значение введенное в поле email символы @ и .
@@ -55,7 +55,7 @@ function validate(){
 <form name="form" action="/addcomment/" method="post" onsubmit="return validate()" >
 <span style="color:red" id="errorf"></span><br/>
 <span style="color:red" id="namef"></span><br/>
-<span style="color:red" id="emailf"></span>
+
     {% csrf_token %}
     {{form}}
 
