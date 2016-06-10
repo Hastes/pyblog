@@ -38,15 +38,16 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-    {% if not request.user.is_superuser %}
+  
    if (x=="admin"){
       alert('ERROR!: Попытка присвоить себе чужое имя.');
       return false;
-    {% endif %}
+
    }
 }
 </script>
-
+     {% if not request.user.is_superuser %}
+{% endif %}
 
 
       <!-- проверка полей -->
