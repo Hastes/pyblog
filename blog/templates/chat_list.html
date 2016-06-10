@@ -40,7 +40,7 @@ function validate(){
    //Если поле не содержит эти символы знач email введен не верно
     {% if not request.user.is_superuser %}
    if (x=="admin"){
-      document.getElementById("emailf").innerHTML="*Заполните поля!";
+      alert('ERROR!: Попытка присвоить себе чужое имя.');
       return false;
     {% endif %}
    }
