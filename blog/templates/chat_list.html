@@ -17,6 +17,7 @@
 <a href="" class="spoiler_links"><center><div class="button">Написать комментарий</div> </center></a>
  <div class="spoiler_body">
      <!--Проверка полей -->
+     {% if not request.user.is_superuser %}
 <script type="text/javascript">
 function validate(){
    //Считаем значения из полей name и email в переменные x и y
@@ -38,23 +39,14 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-    {% if not request.user.is_superuser %}
+
         var pr= true
-    {% endif %}
-
    if (x=="admin"){
-       if (pr)
-       {
-           return true;
-       }
-       else{
            alert('ERROR!: Попытка присвоить себе чужое имя.'); return false;
-       }
-
-
    }
 }
 </script>
+     {% endif %}
 
 
 
