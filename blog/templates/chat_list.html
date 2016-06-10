@@ -46,11 +46,11 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-    {% if not request.user.is_superuser %}
+   // {% if not request.user.is_superuser %}
    if (x=="admin"){
       alert( "Ты кто такой?Я тут админ!)" );
       return false;
-       {% endif %}
+     //  {% endif %}
    }
 }
 
