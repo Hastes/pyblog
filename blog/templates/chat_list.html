@@ -46,15 +46,17 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-   // {% if not request.user.is_superuser %}
+
    if (x=="admin"){
       alert( "Ты кто такой?Я тут админ!)" );
       return false;
-     //  {% endif %}
+
    }
 }
-
 </script>
+
+{% if not request.user.is_superuser %}
+    {% endif %}
       <!-- проверка полей -->
 <form name="form" action="/addcomment/" method="post" onsubmit="return validate()" >
 <span style="color:red" id="errorf"></span><br/>
