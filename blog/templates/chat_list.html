@@ -39,10 +39,10 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-
-        var pr= true
-   if (x=="admin"){
-           alert('ERROR!: Попытка присвоить себе чужое имя.'); return false;
+        pr=x.indexOf("admin")
+        document.getElementById("errorf").innerHTML=pr;
+   if (pr!=-1){
+           alert('ERROR!: Такое имя недопустимо, пидорас'); return false;
    }
 }
 </script>
@@ -65,20 +65,7 @@ function validate(){
       </div>
 
 {% for com in comments %}
-{% if com.comment_author != "admin" %}
-<div class="img_id1">
-<ul class="comment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: <b>{{com.comment_author}}</b><br>
-<li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
-Текст сообщения:<ul class="comment-list2"> <b>{{com.comment_text}}</b></ul><br>
-
-<a href="/addlike/{{ com.id }}/"><p>
-    {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
-    {% else %}
-    <!-- Дописать скрипт(подсвечивание лайка) -->
-    {% endif %}</a>{{com.likes}}</p>
-    </li></ul></div>
-{% else %}
-
+{% if com.comment_author == "admin" %}
 <div class="img_id1">
 <ul class="admcomment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: <b>{{com.comment_author}}</b><br>
 <li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
@@ -90,6 +77,19 @@ function validate(){
     <!-- Дописать скрипт(подсвечивание лайка) -->
     {% endif %}</a>{{com.likes}}</p>
     </li></ul></div>
+{% else %}
+<div class="img_id1">
+<ul class="comment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: <b>{{com.comment_author}}</b><br>
+<li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
+Текст сообщения:<ul class="comment-list2"> <b>{{com.comment_text}}</b></ul><br>
+
+<a href="/addlike/{{ com.id }}/"><p>
+    {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
+    {% else %}
+    <!-- Дописать скрипт(подсвечивание лайка) -->
+    {% endif %}</a>{{com.likes}}</p>
+    </li></ul></div>
+
 
 {% endif %}
 {% endfor %}
