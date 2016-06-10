@@ -71,9 +71,9 @@ function validate(){
 {% for com in comments %}
 {% if com.comment_author != "admin" %}
 <div class="img_id1">
-<ul class="comment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: {{com.comment_author}}<br>
+<ul class="comment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: <b>{{com.comment_author}}</b><br>
 <li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
-Текст сообщения:<ul class="comment-list2"> {{com.comment_text}}</ul><br>
+Текст сообщения:<ul class="comment-list2"> <b>{{com.comment_text}}</b></ul><br>
 
 <a href="/addlike/{{ com.id }}/"><p>
     {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
@@ -84,9 +84,9 @@ function validate(){
 {% else %}
 
 <div class="img_id1">
-<ul class="admcomment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: {{com.comment_author}}<br>
+<ul class="admcomment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: <b>{{com.comment_author}}</b><br>
 <li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
-Текст сообщения:<ul class="comment-list2"> {{com.comment_text}}</ul><br>
+Текст сообщения:<ul class="comment-list2"> <b>{{com.comment_text}}</b></ul><br>
 
 <a href="/addlike/{{ com.id }}/"><p>
     {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
