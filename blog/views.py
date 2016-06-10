@@ -14,7 +14,6 @@ from .models import Post,Comment
 #from django.template import loader,Context
 
 
-
 def post_list(request):
     args={}
     vievlogin = str(request.user)
@@ -40,11 +39,12 @@ def post_new(request):
             form = PostForm()
         return render(request, 'post_edit.html', {'form': form})
 def chat(request):
+
     comment_form = CommentForm
     args = {}
     args.update(csrf(request))
     args['form']=comment_form
-    comment_list= Comment.objects.all()
+    comment_list= Comment.objects.all()[:10]
     args['comments']=comment_list
     return render(request,'chat_list.html',args)
 
@@ -68,6 +68,7 @@ def addcomment(request):
     return redirect('/chat/')
 def about(request):
     return render(request,'about2.html')
+
 
 ##def PostHabr(request):
   #  post = Post.objects.filter(published_date__lte=timezone.now())[0]

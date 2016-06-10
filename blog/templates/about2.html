@@ -22,7 +22,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!----//webfonts---->
 		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<!--end slider -->
+
 		<!--script-->
+	<script type="text/javascript">
+$(document).ready(function(){
+ $('.spoiler_links').click(function(){
+  $(this).parent().children('div.spoiler_body').toggle('normal');
+  return false;
+ });
+});
+</script>
 <script type="text/javascript" src="/static/js/move-top.js"></script>
 <script type="text/javascript" src="/static/js/easing.js"></script>
 <!--/script-->
@@ -56,7 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				   <ul>
 						<li><a href="/">HOME</a></li>
 						<li class="active"><a href="/about/">ABOUT</a></li>
-						<li><a href="/chat/">CHAT</a></li>
+						<li><a href="/chat/">OFFTOP</a></li>
 						<div class="clearfix"> </div>
 				 </ul>
 			 </div>
@@ -75,6 +84,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 <div class="container">
 		 <h2>Something About Me and Blogging</h2>
 		 <div class="about-section">
+								<div>
+				 <a href="" class="spoiler_links">Спойлер №1 (кликните для показа/скрытия)</a>
+				 <div class="spoiler_body">
+				  Текст под спойлером<br>
+				  плавно появляется<br>
+				  и плавно исчезает<br>
+				  при клике по спойлеру
+				 </div>
+				</div>
+				<!--//-->
+				<div>
+				 <a href="" class="spoiler_links">Спойлер №2 (кликните для показа/скрытия)</a>
+				 <div class="spoiler_body">
+				  А это уже другой спойлер!<br>
+				  И он тоже работает!
+				 </div>
+				</div>
 			 <div class="about-grid">
 				 <h3>WHY I STARTED THIS BLOG?</h3>
 				 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 

@@ -1,39 +1,103 @@
 {% extends 'index2.html' %}
 
+
+
 {% block menu %}
 <ul>
     <li ><a href="/">HOME</a></li>
     <li><a href="/about/">ABOUT</a></li>
-    <li class="active"><a href="/chat/">CHAT</a></li>
+    <li class="active"><a href="/chat/">OFFTOP</a></li>
     <div class="clearfix"> </div>
 </ul>
 {% endblock %}
 
 {% block content %}
 
+
+  </form>
 <div class="content-form">
-<form action="/addcomment/" method="post">
+<a href="" class="spoiler_links"><center><div class="button">Написать комментарий</div> </center></a>
+ <div class="spoiler_body">
+     <!--Проверка полей -->
+
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
+<script type="text/javascript">
+function validate(){
+   //Считаем значения из полей name и email в переменные x и y
+   var x=document.forms["form"]["comment_author"].value;
+   var y=document.forms["form"]["comment_text"].value;
+   //Если поле name пустое выведем сообщение и предотвратим отправку формы
+   if (x.length==0){
+       document.getElementById("errorf").innerHTML="Errors:";
+      document.getElementById("namef").innerHTML="*Заполните поля!";
+      return false;
+   }
+   //Если поле email пустое выведем сообщение и предотвратим отправку формы
+   if (y.length==0){
+       document.getElementById("errorf").innerHTML="Errors:";
+      document.getElementById("emailf").innerHTML="*Заполните поля!";
+      return false;
+   }
+   //Проверим содержит ли значение введенное в поле email символы @ и .
+   //at=y.indexOf("@");
+   //dot=y.indexOf(".");
+   //Если поле не содержит эти символы знач email введен не верно
+    {% if not request.user.is_superuser %}
+   if (x=="admin"){
+      alert( "Ты кто такой?Я тут админ!)" );
+      return false;
+       {% endif %}
+   }
+}
+
+</script>
+      <!-- проверка полей -->
+<form name="form" action="/addcomment/" method="post" onsubmit="return validate()" >
+<span style="color:red" id="errorf"></span><br/>
+<span style="color:red" id="namef"></span><br/>
+<span style="color:red" id="emailf"></span>
     {% csrf_token %}
     {{form}}
+
     <input type="submit" class="button" value="Отправить">
 </form>
     </div><br>
-<style>
-   hr {
-    border: none; /* Убираем границу */
-    background-color: rgba(185, 206, 246, 0.59); /* Цвет линии */
-    color: rgba(185, 206, 246, 0.65); /* Цвет линии для IE6-7 */
-    height: 1px; /* Толщина линии */
-   }
-  </style>
+      </div>
 
 {% for com in comments %}
-
-<ul class="comment-list">Автор: {{com.comment_author}}<br>
+{% if com.comment_author != "admin" %}
+<div class="img_id1">
+<ul class="comment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: {{com.comment_author}}<br>
 <li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
-<img src="/static/images/avatar.png" class="img-responsive" alt="">{{com.comment_text}}<br>
-<a href="/addlike/{{ com.id }}/">Плюсик: + {{com.likes}}</a>
-    </li></ul>
+Текст сообщения:<ul class="comment-list2"> {{com.comment_text}}</ul><br>
+
+<a href="/addlike/{{ com.id }}/"><p>
+    {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
+    {% else %}
+    <!-- Дописать скрипт(подсвечивание лайка) -->
+    {% endif %}</a>{{com.likes}}</p>
+    </li></ul></div>
+{% else %}
+
+<div class="img_id1">
+<ul class="admcomment-list"><img src="/static/images/avatar.png" class="img-responsive" alt="">Автор: {{com.comment_author}}<br>
+<li><font size="2" color="#a9a9a9" >{{com.comment_created_date}}</font><br>
+Текст сообщения:<ul class="comment-list2"> {{com.comment_text}}</ul><br>
+
+<a href="/addlike/{{ com.id }}/"><p>
+    {% if True %}<img src="/static/images/emptylike.png" class="img_id1" alt="">
+    {% else %}
+    <!-- Дописать скрипт(подсвечивание лайка) -->
+    {% endif %}</a>{{com.likes}}</p>
+    </li></ul></div>
+
+{% endif %}
 {% endfor %}
+
+
 
 {% endblock %}

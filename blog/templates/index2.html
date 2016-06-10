@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" 
 	/>
+
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!----webfonts---->
 		<link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
@@ -23,6 +24,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<!--end slider -->
 		<!--script-->
+	<script type="text/javascript">
+$(document).ready(function(){
+ $('.spoiler_links').click(function(){
+  $(this).parent().children('div.spoiler_body').toggle('normal');
+  return false;
+ });
+});
+</script>
+	<style type="text/css">
+ .spoiler_body {display:none; cursor:pointer;}
+</style>
+	 <style type="text/css">
+    td select,
+    td input {
+      width: 150px;
+    }
+
+    label {
+      display: block;
+    }
+
+    .error input,
+    .error textarea {
+      border: 1px solid red;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
 <script type="text/javascript" src="/static/js/move-top.js"></script>
 <script type="text/javascript" src="/static/js/easing.js"></script>
 <!--/script-->
@@ -34,6 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				});
 			});
 </script>
+
 <!---->
 
 </head>
