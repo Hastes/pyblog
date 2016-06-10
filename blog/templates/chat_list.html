@@ -12,19 +12,11 @@
 {% endblock %}
 
 {% block content %}
-
-
   </form>
 <div class="content-form">
 <a href="" class="spoiler_links"><center><div class="button">Написать комментарий</div> </center></a>
  <div class="spoiler_body">
      <!--Проверка полей -->
-
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 <script type="text/javascript">
 function validate(){
    //Считаем значения из полей name и email в переменные x и y
@@ -48,7 +40,7 @@ function validate(){
    //Если поле не содержит эти символы знач email введен не верно
 
    if (x=="admin"){
-      alert( "Ты кто такой?Я тут админ!)" );
+      document.getElementById("emailf").innerHTML="*Заполните поля!";
       return false;
 
    }
