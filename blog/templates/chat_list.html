@@ -38,10 +38,15 @@ function validate(){
    //at=y.indexOf("@");
    //dot=y.indexOf(".");
    //Если поле не содержит эти символы знач email введен не верно
-  
+
    if (x=="admin"){
-      alert('ERROR!: Попытка присвоить себе чужое имя.');
-      return false;
+       if ({{request.user.is_superuser}})
+       {
+           return true;
+       }
+        else{
+        alert('ERROR!: Попытка присвоить себе чужое имя.');}
+        return false;
 
    }
 }
