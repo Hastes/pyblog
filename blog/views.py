@@ -42,6 +42,7 @@ def chat(request):
 
     comment_form = CommentForm
     args = {}
+    args['posts']= Post.objects.all()[:5]
     args.update(csrf(request))
     args['form']=comment_form
     comment_list= Comment.objects.all()[:10]
