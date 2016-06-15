@@ -9,6 +9,9 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^auth/',include('loginapp.urls')),
     url(r'', include('blog.urls')),
+
+
     #(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
 ]

@@ -10,12 +10,13 @@ from django.core.context_processors import csrf
 #from pyt1.post_habr import GetContentHabr, GetTitleHabr
 from .forms import PostForm,CommentForm
 from .models import Post,Comment
-
+from django.contrib import auth
 #from django.template import loader,Context
 
 
 def post_list(request):
     args={}
+    args['username']=auth.get_user(request).username
     vievlogin = str(request.user)
     if (vievlogin == "hastes"):
         args['adminpanel']= True
@@ -42,6 +43,7 @@ def chat(request):
 
     comment_form = CommentForm
     args = {}
+    args['username']=auth.get_user(request).username
     args['posts']= Post.objects.all()[:5]
     args.update(csrf(request))
     args['form']=comment_form
@@ -68,7 +70,7 @@ def addcomment(request):
             comment.save()
     return redirect('/chat/')
 def about(request):
-    return render(request,'about2.html')
+    return render(request,'about2.html',{'username': auth.get_user(request).username})
 
 
 ##def PostHabr(request):

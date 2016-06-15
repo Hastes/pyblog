@@ -52,7 +52,9 @@ $(document).ready(function(){
 
 			 <!---start-top-nav---->
 			 <div class="top-menu">
-
+				 <div class="log">
+					 {% if username %}<a href="/auth/logout/"> ВЫЙТИ, {{username}} </a>{% else %}<a href="/auth/login/">ВОЙТИ</a> / <a href="/auth/login/">РЕГИСТРАЦИЯ</a>{% endif %}
+				 </div>
 				 <div class="search">
 					 <form>
 					 <input type="text" placeholder="Поиск" required="">
