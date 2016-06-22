@@ -91,7 +91,7 @@ $(document).ready(function(){
 				  <h3><a href="/admin/">ADMIN PANEL</a></h3>
 					  <ul>
 						  <li><a href="{% url 'blog.views.post_new' %}">Добавить пост</a> </li>
-						  <li><a href="">Добавить последний хабрпост</a></li>
+						  <li><a href="{% url 'PostHabr' %}">Добавить последний хабрпост</a></li>
 					  </uL>
 					  </div>
 				  {% endif %}

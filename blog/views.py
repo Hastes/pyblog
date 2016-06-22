@@ -1,13 +1,13 @@
 #import datetime
 #from django.contrib import admin
-#from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect,  render_to_response
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 #from django.template import Context
 #from django.template.loader import get_template
 from django.utils import timezone
 from django.core.context_processors import csrf
 
-#from pyt1.post_habr import GetContentHabr, GetTitleHabr
+from .post_habr import GetContentHabr, GetTitleHabr
 from .forms import PostForm,CommentForm
 from .models import Post,Comment
 from django.contrib import auth
@@ -73,15 +73,15 @@ def about(request):
     return render(request,'about2.html',{'username': auth.get_user(request).username})
 
 
-##def PostHabr(request):
-  #  post = Post.objects.filter(published_date__lte=timezone.now())[0]
-   # oldtitle = post.title
-  #  newtitle= GetTitleHabr()
-  #  print(oldtitle, newtitle)
-  #  if oldtitle != newtitle:
-  #      title = GetTitleHabr()
-   #     oldtitle=title
-  #      Post.objects.create(author=request.user, title=title, text=GetContentHabr(),published_date = timezone.now())
-   #     return HttpResponseRedirect("http://localhost:8000/")
-  #  else:
- #       return HttpResponse("Post usje dobavlen")
+def PostHabr(request):
+    post = Post.objects.filter(published_date__lte=timezone.now())[0]
+    oldtitle = post.title
+    newtitle= GetTitleHabr()
+    print(oldtitle, newtitle)
+    if oldtitle != newtitle:
+        title = GetTitleHabr()
+        oldtitle=title
+        Post.objects.create(author=request.user, title=title, text=GetContentHabr(),published_date = timezone.now())
+        return redirect('/')
+    else:
+        return HttpResponse("Post usje dobavlen")
