@@ -26,7 +26,8 @@ def post_list(request):
 def post_detail(request, pk):
     title = Post.objects.all()[:5]
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'post_detail.html', {'post': post,'posts':title})
+    username=auth.get_user(request).username
+    return render(request, 'post_detail.html', {'post': post,'posts':title,'username':username})
 def post_new(request):
         if request.method == "POST":
             form = PostForm(request.POST)
