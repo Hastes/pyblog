@@ -41,7 +41,6 @@ def post_new(request):
             form = PostForm()
         return render(request, 'post_edit.html', {'form': form})
 def chat(request):
-
     comment_form = CommentForm
     args = {}
     args['username']=auth.get_user(request).username
